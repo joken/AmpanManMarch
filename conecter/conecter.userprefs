@@ -1,10 +1,11 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\OverlayDemo\Scripts\KinectOverlayer.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\KinectScripts\Samples\SimpleGestureListener.cs">
     <Files>
-      <File FileName="Assets\OverlayDemo\Scripts\KinectOverlayer.cs" Line="26" Column="72" />
+      <File FileName="Assets\OverlayDemo\Scripts\KinectOverlayer.cs" Line="52" Column="46" />
       <File FileName="Assets\OverlayDemo\Scripts\PositionTextRenderer.cs" Line="11" Column="2" />
-      <File FileName="Assets\OverlayDemo\Scripts\SkeltonPosIndexName.cs" Line="9" Column="23" />
+      <File FileName="Assets\KinectScripts\Samples\SimpleGestureListener.cs" Line="30" Column="59" />
+      <File FileName="Assets\KinectScripts\KinectManager.cs" Line="71" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

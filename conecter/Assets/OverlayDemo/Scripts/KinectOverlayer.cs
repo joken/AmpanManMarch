@@ -44,12 +44,12 @@ public class KinectOverlayer : MonoBehaviour
 			
 //			Vector3 vRight = BottomRight - BottomLeft;
 //			Vector3 vUp = TopLeft - BottomLeft;
-			
-			for(int TrackedJointsPos = 0; TrackedJointsPos < TrackedJoints.Count; TrackedJointsPos++) {
-				int iJointIndex = (int)TrackedJointsPos;
-				
-				if (manager.IsUserDetected ()) {
-					uint userId = manager.GetPlayer1ID ();
+
+			if (manager.IsUserDetected ()) {
+				uint userId = manager.GetPlayer1ID ();
+
+				for(int TrackedJointsPos = 0; TrackedJointsPos < TrackedJoints.Count; TrackedJointsPos++) {
+					int iJointIndex = (int)TrackedJointsPos;
 					
 					if (manager.IsJointTracked (userId, iJointIndex)) {
 						Vector3 posJoint = manager.GetRawSkeletonJointPos (userId, iJointIndex);
