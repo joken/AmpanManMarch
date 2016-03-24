@@ -9,6 +9,10 @@ public class SimpleGestureListener : MonoBehaviour, KinectGestures.GestureListen
 	
 	// private bool to track if progress message has been displayed
 	private bool progressDisplayed;
+
+	//ほのおをだすやつ(左右分あるよ)
+	public GameObject fireObjectRight;
+	public GameObject fireObjectLeft;
 	
 	
 	public void UserDetected(uint userId, int userIndex)
@@ -78,6 +82,13 @@ public class SimpleGestureListener : MonoBehaviour, KinectGestures.GestureListen
 		
 		if(GestureInfo != null)
 			GestureInfo.GetComponent<GUIText>().text = sGestureText;
+
+		//ほのお
+		if(gesture == KinectGestures.Gestures.Psi || 
+			gesture == KinectGestures.Gestures.RaiseLeftHand ||
+			gesture == KinectGestures.Gestures.RaiseRightHand){
+			this.GenerateFire (gesture);
+		}
 		
 		progressDisplayed = false;
 		
@@ -97,6 +108,21 @@ public class SimpleGestureListener : MonoBehaviour, KinectGestures.GestureListen
 		}
 		
 		return true;
+	}
+
+	private void GenerateFire(KinectGestures.Gestures gesture){
+		switch (gesture) {
+		case KinectGestures.Gestures.Psi:
+			this.fireObjectLeft.GetComponent<ParticleGenerator> ().Generate ();
+			this.fireObjectRight.GetComponent<ParticleGenerator> ().Generate ();
+			break;
+		case KinectGestures.Gestures.RaiseLeftHand:
+			this.fireObjectLeft.GetComponent<ParticleGenerator> ().Generate ();
+			break;
+		case KinectGestures.Gestures.RaiseRightHand:
+			this.fireObjectRight.GetComponent<ParticleGenerator> ().Generate ();
+			break;
+		}
 	}
 	
 }
