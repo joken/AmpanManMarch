@@ -21,26 +21,35 @@ public class SimpleGestureListener : MonoBehaviour, KinectGestures.GestureListen
 	//水をだすやつ(左右)
 	public GameObject waterObjectRight;
 	public GameObject waterObjectLeft;
+
+	//ビームだすやつ(左右)
+	public GameObject beamObjectRight;
+	public GameObject beamObjectLeft;
+
+	//惑星だすやつ(左右)
+	public GameObject planetObjectRight;
+	public GameObject planetObjectLeft;
 	
 	
 	public void UserDetected(uint userId, int userIndex)
 	{
 		// as an example - detect these user specific gestures
-		//DetectしたいGestureをDetectGestureの引数に突っ込んで呼ぶ(?)
+		//DetectしたいGestureをDetectGestureの引数に突っ込んで呼ぶようです
 		KinectManager manager = KinectManager.Instance;
 
 		//デフォルトのやつ(足元のやつ)
 		this.GenerateFootParticle();
 
-		manager.DetectGesture(userId, KinectGestures.Gestures.Jump);
-		manager.DetectGesture(userId, KinectGestures.Gestures.Squat);
+		//manager.DetectGesture(userId, KinectGestures.Gestures.Jump);
+		//manager.DetectGesture(userId, KinectGestures.Gestures.Squat);
 
-//		manager.DetectGesture(userId, KinectGestures.Gestures.Push);
+		manager.DetectGesture(userId, KinectGestures.Gestures.Push);
 //		manager.DetectGesture(userId, KinectGestures.Gestures.Pull);
 
 		manager.DetectGesture (userId, KinectGestures.Gestures.Psi);
 		manager.DetectGesture(userId, KinectGestures.Gestures.SwipeRight);
 		manager.DetectGesture(userId, KinectGestures.Gestures.SwipeLeft);
+		manager.DetectGesture(userId, KinectGestures.Gestures.SwipeUp);
 		manager.DeleteGesture (userId, KinectGestures.Gestures.RaiseRightHand);
 		manager.DeleteGesture (userId, KinectGestures.Gestures.RaiseLeftHand);
 		
@@ -111,6 +120,19 @@ public class SimpleGestureListener : MonoBehaviour, KinectGestures.GestureListen
 		   gesture == KinectGestures.Gestures.SwipeRight) {
 			this.GenerateWater (gesture);
 		}
+
+		//ビーム
+		if(gesture == KinectGestures.Gestures.Push){
+			this.GenerateBeam ();
+		}
+
+		//惑星
+		if(gesture == KinectGestures.Gestures.SwipeUp){
+			this.GeneratePlanet (joint);
+		}
+
+		//jointを確かめるだけ
+		//Debug.Log("joint : "+joint+" Gesture : "+sGestureText);
 		
 		progressDisplayed = false;
 		
@@ -171,6 +193,22 @@ public class SimpleGestureListener : MonoBehaviour, KinectGestures.GestureListen
 	private void StopFootParticle(){
 		this.footParticleLeft.GetComponent<ParticleGenerator> ().Stop ();
 		this.footParticleRight.GetComponent<ParticleGenerator> ().Stop ();
+	}
+
+	private void GenerateBeam(){
+		this.beamObjectLeft.GetComponent<ParticleGenerator> ().Generate ();
+		this.beamObjectRight.GetComponent<ParticleGenerator> ().Generate ();
+	}
+
+	private void GeneratePlanet(KinectWrapper.NuiSkeletonPositionIndex joint){
+		switch(joint){
+		case KinectWrapper.NuiSkeletonPositionIndex.HandRight:
+			this.planetObjectRight.GetComponent<PlanetBehaviour> ().Play ();
+			break;
+		case KinectWrapper.NuiSkeletonPositionIndex.HandLeft:
+			this.planetObjectLeft.GetComponent<PlanetBehaviour> ().Play ();
+			break;
+		}
 	}
 	
 }
