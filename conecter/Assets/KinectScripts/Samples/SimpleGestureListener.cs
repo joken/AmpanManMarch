@@ -10,33 +10,49 @@ public class SimpleGestureListener : MonoBehaviour, KinectGestures.GestureListen
 	// private bool to track if progress message has been displayed
 	private bool progressDisplayed;
 
+	//足元のやつ(左右)
+	public GameObject footParticleRight;
+	public GameObject footParticleLeft;
+
 	//ほのおをだすやつ(左右分あるよ)
 	public GameObject fireObjectRight;
 	public GameObject fireObjectLeft;
+
+	//水をだすやつ(左右)
+	public GameObject waterObjectRight;
+	public GameObject waterObjectLeft;
 	
 	
 	public void UserDetected(uint userId, int userIndex)
 	{
 		// as an example - detect these user specific gestures
+		//DetectしたいGestureをDetectGestureの引数に突っ込んで呼ぶ(?)
 		KinectManager manager = KinectManager.Instance;
+
+		//デフォルトのやつ(足元のやつ)
+		this.GenerateFootParticle();
 
 		manager.DetectGesture(userId, KinectGestures.Gestures.Jump);
 		manager.DetectGesture(userId, KinectGestures.Gestures.Squat);
 
 //		manager.DetectGesture(userId, KinectGestures.Gestures.Push);
 //		manager.DetectGesture(userId, KinectGestures.Gestures.Pull);
-		
-//		manager.DetectGesture(userId, KinectWrapper.Gestures.SwipeUp);
-//		manager.DetectGesture(userId, KinectWrapper.Gestures.SwipeDown);
+
+		manager.DetectGesture (userId, KinectGestures.Gestures.Psi);
+		manager.DetectGesture(userId, KinectGestures.Gestures.SwipeRight);
+		manager.DetectGesture(userId, KinectGestures.Gestures.SwipeLeft);
+		manager.DeleteGesture (userId, KinectGestures.Gestures.RaiseRightHand);
+		manager.DeleteGesture (userId, KinectGestures.Gestures.RaiseLeftHand);
 		
 		if(GestureInfo != null)
 		{
-			GestureInfo.GetComponent<GUIText>().text = "SwipeLeft, SwipeRight, Jump or Squat.";
+			GestureInfo.GetComponent<GUIText>().text = "User detected";
 		}
 	}
 	
 	public void UserLost(uint userId, int userIndex)
 	{
+		this.StopFootParticle ();
 		if(GestureInfo != null)
 		{
 			GestureInfo.GetComponent<GUIText>().text = string.Empty;
@@ -76,7 +92,7 @@ public class SimpleGestureListener : MonoBehaviour, KinectGestures.GestureListen
 	public bool GestureCompleted (uint userId, int userIndex, KinectGestures.Gestures gesture, 
 	                              KinectWrapper.NuiSkeletonPositionIndex joint, Vector3 screenPos)
 	{
-		string sGestureText = gesture + " detected";
+		string sGestureText = gesture.ToString() + " detected";
 		if(gesture == KinectGestures.Gestures.Click)
 			sGestureText += string.Format(" at ({0:F1}, {1:F1})", screenPos.x, screenPos.y);
 		
@@ -88,6 +104,12 @@ public class SimpleGestureListener : MonoBehaviour, KinectGestures.GestureListen
 			gesture == KinectGestures.Gestures.RaiseLeftHand ||
 			gesture == KinectGestures.Gestures.RaiseRightHand){
 			this.GenerateFire (gesture);
+		}
+
+		//水
+		if (gesture == KinectGestures.Gestures.SwipeLeft ||
+		   gesture == KinectGestures.Gestures.SwipeRight) {
+			this.GenerateWater (gesture);
 		}
 		
 		progressDisplayed = false;
@@ -123,6 +145,32 @@ public class SimpleGestureListener : MonoBehaviour, KinectGestures.GestureListen
 			this.fireObjectRight.GetComponent<ParticleGenerator> ().Generate ();
 			break;
 		}
+	}
+
+	private void GenerateWater(KinectGestures.Gestures gesture){
+		if (gesture == KinectGestures.Gestures.SwipeLeft &&
+		   gesture == KinectGestures.Gestures.SwipeRight) {
+			this.waterObjectLeft.GetComponent<ParticleGenerator> ().Generate ();
+			this.waterObjectRight.GetComponent<ParticleGenerator> ().Generate ();
+		}
+		switch (gesture) {
+		case KinectGestures.Gestures.SwipeLeft:
+			this.waterObjectLeft.GetComponent<ParticleGenerator> ().Generate ();
+			break;
+		case KinectGestures.Gestures.SwipeRight:
+			this.waterObjectRight.GetComponent<ParticleGenerator> ().Generate ();
+			break;
+		}
+	}
+
+	private void GenerateFootParticle(){
+		this.footParticleLeft.GetComponent<ParticleGenerator> ().Generate ();
+		this.footParticleRight.GetComponent<ParticleGenerator> ().Generate ();
+	}
+
+	private void StopFootParticle(){
+		this.footParticleLeft.GetComponent<ParticleGenerator> ().Stop ();
+		this.footParticleRight.GetComponent<ParticleGenerator> ().Stop ();
 	}
 	
 }
