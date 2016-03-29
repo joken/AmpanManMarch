@@ -2,22 +2,23 @@
 using System.Collections;
 
 public class ParticleGenerator : MonoBehaviour {
-	//うまく位置がコピーできないので一時オミット()
-	/*public GameObject particlePositionParent;
 
-	private Vector3 parentPosition;
-
-	void Start(){
-		this.parentPosition = new Vector3 ();
-	}
+	/*
+	//やっぱりいらなかったよ...
+	//位置をコピペする親
+	public GameObject particlePositionParent;
 
 	void Upadate(){
-		this.parentPosition.Set(
-			particlePositionParent.transform.position.x,
-			particlePositionParent.transform.position.y,
-			particlePositionParent.transform.position.z
-		);
-		this.transform.position = parentPosition;
+		this.transform.position = particlePositionParent.transform.position;
+		this.transform.rotation = particlePositionParent.transform.rotation;
+
+		foreach (Transform child in this.transform) {
+			ParticleSystem particle = child.GetComponent<ParticleSystem>();
+			if (particle.isPlaying) {
+				particle.Simulate (0.005f);
+				particle.Emit (particle.particleCount);
+			}
+		}
 	}*/
 
 	public void Generate(){

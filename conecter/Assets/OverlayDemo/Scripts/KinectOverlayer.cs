@@ -23,7 +23,7 @@ public class KinectOverlayer : MonoBehaviour
 	void Start()
 	{
 		TrackedJoints = new List<KinectWrapper.NuiSkeletonPositionIndex> (OverlayObjects.Count);
-		OverlayObjects.ForEach (o => TrackedJoints.Add(o.GetComponents<SkeltonPosIndexName>()[0].getSkelton()));
+		OverlayObjects.ForEach (o => TrackedJoints.Add(o.GetComponent<SkeltonPosIndexName>().getSkelton()));
 		if(OverlayObjects[0])
 		{
 			distanceToCamera = (OverlayObjects[0].transform.position - Camera.main.transform.position).magnitude;
@@ -48,11 +48,13 @@ public class KinectOverlayer : MonoBehaviour
 			if (manager.IsUserDetected ()) {
 				uint userId = manager.GetPlayer1ID ();
 
-				for(int TrackedJointsPos = 0; TrackedJointsPos < TrackedJoints.Count; TrackedJointsPos++) {
-					int iJointIndex = (int)TrackedJointsPos;
-					
+				foreach(GameObject joint in this.OverlayObjects) {
+					KinectWrapper.NuiSkeletonPositionIndex skelton = joint.GetComponent<SkeltonPosIndexName>().getSkelton();
+					int iJointIndex = this.TrackedJoints.IndexOf(skelton);
+					Debug.Log ("Pos : "+iJointIndex);
+
 					if (manager.IsJointTracked (userId, iJointIndex)) {
-						Vector3 posJoint = manager.GetRawSkeletonJointPos (userId, iJointIndex);
+						Vector3 posJoint = manager.GetRawSkeletonJointPos (userId, (int)skelton);
 				
 						if (posJoint != Vector3.zero) {
 							// 3d position to depth
@@ -74,7 +76,7 @@ public class KinectOverlayer : MonoBehaviour
 							
 							if (OverlayObjects[0]) {
 								Vector3 vPosOverlay = Camera.main.ViewportToWorldPoint (new Vector3 (scaleX, scaleY, distanceToCamera));
-								OverlayObjects[TrackedJointsPos].transform.position = Vector3.Lerp (OverlayObjects[TrackedJointsPos].transform.position, vPosOverlay, smoothFactor * Time.deltaTime);
+								OverlayObjects[iJointIndex].transform.position = Vector3.Lerp (OverlayObjects[iJointIndex].transform.position, vPosOverlay, smoothFactor * Time.deltaTime);
 							}
 						}
 					}
