@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/key_effect.unity
+- path: Assets/key.unity
   isLoaded: 1
   isActive: 1

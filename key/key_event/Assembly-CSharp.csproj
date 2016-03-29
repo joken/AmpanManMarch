@@ -45,11 +45,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\splict\Round.cs" />
-     <Compile Include="Assets\splict\create.cs" />
-     <Compile Include="Assets\splict\debug.cs" />
-     <Compile Include="Assets\splict\key.cs" />
-     <Compile Include="Assets\splict\look.cs" />
+     <Compile Include="Assets\sclipt\HeroMan.cs" />
+     <Compile Include="Assets\sclipt\goal.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

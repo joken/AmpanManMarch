@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/sample2.unity
+- path: "C:/Users/\u96C4\u592A/workspace/AmpanManMarch/effects/Assets/SimpleParticlePack/_Scenes/SimpleParticlePack.unity"
   isLoaded: 1
   isActive: 1
