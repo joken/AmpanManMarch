@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Water FX Pack/Demo Scenes/Waterfall.unity
+- path: Assets/beam.unity
   isLoaded: 1
   isActive: 1
