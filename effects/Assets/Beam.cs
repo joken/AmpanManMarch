@@ -2,8 +2,9 @@
 using System.Collections;
 
 public class Beam : MonoBehaviour {
-	public GameObject b1;
-	public GameObject b2;
+	public GameObject hand;
+	public GameObject elbow;
+	public GameObject heart;
 	// Use this for initialization
 	void Start () {
 
@@ -11,6 +12,12 @@ public class Beam : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		b1.transform.LookAt (b1.transform.position-(b2.transform.position-b1.transform.position));
+		//Debug.Log (BeamMan.col);
+		if (!BeamMan.col) {
+			hand.transform.LookAt (hand.transform.position - (elbow.transform.position - hand.transform.position));
+		} else {
+			hand.transform.LookAt (hand.transform.position - (heart.transform.position - hand.transform.position));
+		}
 	}
+
 }
