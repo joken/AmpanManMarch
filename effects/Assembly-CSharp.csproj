@@ -49,6 +49,7 @@
      <Compile Include="Assets\BeamMan.cs" />
      <Compile Include="Assets\SimpleParticlePack\Scripts\ParticleTester.cs" />
      <Compile Include="Assets\bachi1.cs" />
+     <Compile Include="Assets\underground.cs" />
      <Compile Include="Assets\water.cs" />
      <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
      <None Include="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />

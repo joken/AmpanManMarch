@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/beam.unity
+- path: Assets/underground.unity
   isLoaded: 1
   isActive: 1
