@@ -203,10 +203,10 @@ public class SimpleGestureListener : MonoBehaviour, KinectGestures.GestureListen
 	private void GeneratePlanet(KinectWrapper.NuiSkeletonPositionIndex joint){
 		switch(joint){
 		case KinectWrapper.NuiSkeletonPositionIndex.HandRight:
-			this.planetObjectRight.GetComponent<PlanetBehaviour> ().Play ();
+//			this.planetObjectRight.GetComponent<PlanetBehaviour> ().Play ();
 			break;
 		case KinectWrapper.NuiSkeletonPositionIndex.HandLeft:
-			this.planetObjectLeft.GetComponent<PlanetBehaviour> ().Play ();
+			//this.planetObjectLeft.GetComponent<PlanetBehaviour> ().Play ();
 			break;
 		}
 	}
