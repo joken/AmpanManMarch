@@ -13,14 +13,13 @@ public class fire : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (effectMan.bachi) {
+		if (effectMan.bachiR) {
 			//Debug.Log ("test");
 			//Debug.Log (effectMan.col);
 			if (!effectMan.col) {
 				//bachi1.transform.position = new Vector3 (Random.Range (-2.0f, 2.0f), Random.Range (-2.0f, 2.0f), Random.Range (-2.0f, 2.0f));
 				bachi1.Play ();
 				//bachi2.transform.position = new Vector3 (Random.Range (-2.0f, 2.0f), Random.Range (-2.0f, 2.0f), Random.Range (-2.0f, 2.0f));
-				bachi2.Play ();
 				fi.Stop ();
 			} else {
 				if (player) {
@@ -29,10 +28,16 @@ public class fire : MonoBehaviour {
 				}
 			
 			}
-		} else {
+		}
+		if (effectMan.bachiL) {
+			if (!effectMan.col) {
+				//bachi1.transform.position = new Vector3 (Random.Range (-2.0f, 2.0f), Random.Range (-2.0f, 2.0f), Random.Range (-2.0f, 2.0f));
+				bachi2.Play ();}
+		}
+			if(!effectMan.bachiL &&!effectMan.bachiR){
 			fi.Stop ();
 			//Debug.Log ("a");
-			player = true;
-		}
+				player = true;}
+		
 	}
 }
