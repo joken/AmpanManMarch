@@ -48,8 +48,12 @@
      <Compile Include="Assets\SimpleParticlePack\Scripts\ParticleTester.cs" />
      <Compile Include="Assets\beam.cs" />
      <Compile Include="Assets\byfoot.cs" />
+     <Compile Include="Assets\create.cs" />
      <Compile Include="Assets\effectMan.cs" />
      <Compile Include="Assets\fire.cs" />
+     <Compile Include="Assets\goal.cs" />
+     <Compile Include="Assets\planetMan.cs" />
+     <Compile Include="Assets\rotate.cs" />
      <Compile Include="Assets\testEffect\Beam.cs" />
      <Compile Include="Assets\testEffect\BeamMan.cs" />
      <Compile Include="Assets\testEffect\bachi1.cs" />

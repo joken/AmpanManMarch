@@ -2,14 +2,14 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\wave.cs">
     <Files>
-      <File FileName="Assets\fire.cs" Line="34" Column="6" />
-      <File FileName="Assets\effectMan.cs" Line="26" Column="4" />
-      <File FileName="Assets\testEffect\Beam.cs" Line="10" Column="3" />
-      <File FileName="Assets\testEffect\BeamMan.cs" Line="55" Column="20" />
-      <File FileName="Assets\wave.cs" Line="44" Column="10" />
-      <File FileName="Assets\beam.cs" Line="23" Column="9" />
-      <File FileName="Assets\byfoot.cs" Line="23" Column="29" />
-      <File FileName="Assets\testEffect\underground.cs" Line="8" Column="41" />
+      <File FileName="Assets\fire.cs" Line="40" Column="20" />
+      <File FileName="Assets\effectMan.cs" Line="28" Column="9" />
+      <File FileName="Assets\wave.cs" Line="90" Column="83" />
+      <File FileName="Assets\beam.cs" Line="19" Column="2" />
+      <File FileName="Assets\byfoot.cs" Line="22" Column="134" />
+      <File FileName="Assets\planetMan.cs" Line="13" Column="5" />
+      <File FileName="Assets\create.cs" Line="24" Column="81" />
+      <File FileName="Assets\rotate.cs" Line="13" Column="54" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

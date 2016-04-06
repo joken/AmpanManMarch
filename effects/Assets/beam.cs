@@ -19,20 +19,28 @@ public class beam : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (effectMan.beams) {
+		if (effectMan.beamsR) {
 			if (!effectMan.col) {
 				player (beams1);
-				player (beams2);
 				stopper (beamb);
 				hand1.transform.LookAt (hand1.transform.position - (elbow1.transform.position - hand1.transform.position));
 				hand2.transform.LookAt (hand2.transform.position - (elbow2.transform.position - hand2.transform.position));
 			} else {
-				stopper (beams1);
 				stopper (beams2);
 				player (beamb);
 				hand1.transform.LookAt (hand1.transform.position - (heart.transform.position - hand1.transform.position));
 			}
-		} else {
+		}
+		if (effectMan.beamsL) {
+			if (!effectMan.col) {
+				player (beams2);
+				hand1.transform.LookAt (hand1.transform.position - (elbow1.transform.position - hand1.transform.position));
+				hand2.transform.LookAt (hand2.transform.position - (elbow2.transform.position - hand2.transform.position));
+			} else {
+				stopper (beams2);
+			}
+		}
+		if (!effectMan.beamsL&&!effectMan.beamsR) {
 			stopper (beams1);
 			stopper (beams2);
 			stopper (beamb);
