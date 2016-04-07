@@ -19,9 +19,8 @@ public class beam : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//終わったらさしかえて
-		//if (effectMan.beamsR) {
-		if(true){
+		if (effectMan.beamsR) {
+//		if(true){デバックよう
 			Debug.Log ("test");
 			if (!effectMan.col) {
 					player (beams1);
@@ -43,15 +42,14 @@ public class beam : MonoBehaviour {
 				stopper (beams2);
 			}
 		}
-		//終わったら外して
-		/*if (!effectMan.beamsL&&!effectMan.beamsR) {
+		//終わったら外して - > はずした
+		if (!effectMan.beamsL&&!effectMan.beamsR) {
 			stopper (beams1);
 			stopper (beams2);
 			stopper (beamb);
-		}*/
-
-
+		}
 	}
+
 	void player( ParticleSystem[] p){
 		foreach (ParticleSystem i in p) {
 			i.Play ();

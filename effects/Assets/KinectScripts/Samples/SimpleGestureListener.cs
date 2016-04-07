@@ -10,9 +10,11 @@ public class SimpleGestureListener : MonoBehaviour, KinectGestures.GestureListen
 	// private bool to track if progress message has been displayed
 	private bool progressDisplayed;
 
-	//足元のやつ(左右)
-	public GameObject footParticleRight;
-	public GameObject footParticleLeft;
+	//足元のやつ
+	public GameObject footParticle;
+
+	//べつの場所でいじる
+	/*public GameObject footParticleLeft;
 
 	//ほのおをだすやつ(左右分あるよ)
 	public GameObject fireObjectRight;
@@ -28,8 +30,14 @@ public class SimpleGestureListener : MonoBehaviour, KinectGestures.GestureListen
 
 	//惑星だすやつ(左右)
 	public GameObject planetObjectRight;
-	public GameObject planetObjectLeft;
-	
+	public GameObject planetObjectLeft;*/
+
+	//ビーム発射じかん
+	public float TTLBeam = 3.0f;
+	//ほのお再生じかん
+	public float TTLFire = 1.0f;
+	//惑星再生じかん
+	public float TTLPlanet = 5.0f;
 	
 	public void UserDetected(uint userId, int userIndex)
 	{
@@ -62,6 +70,7 @@ public class SimpleGestureListener : MonoBehaviour, KinectGestures.GestureListen
 	public void UserLost(uint userId, int userIndex)
 	{
 		this.StopFootParticle ();
+		this.StopWater ();
 		if(GestureInfo != null)
 		{
 			GestureInfo.GetComponent<GUIText>().text = string.Empty;
@@ -128,7 +137,7 @@ public class SimpleGestureListener : MonoBehaviour, KinectGestures.GestureListen
 
 		//惑星
 		if(gesture == KinectGestures.Gestures.SwipeUp){
-			this.GeneratePlanet (joint);
+			this.GeneratePlanet ();
 		}
 
 		//jointを確かめるだけ
@@ -157,58 +166,90 @@ public class SimpleGestureListener : MonoBehaviour, KinectGestures.GestureListen
 	private void GenerateFire(KinectGestures.Gestures gesture){
 		switch (gesture) {
 		case KinectGestures.Gestures.Psi:
+			effectMan.bachiL = true;
+			effectMan.bachiR = true;
 			//this.fireObjectLeft.GetComponent<ParticleGenerator> ().Generate ();
 			//this.fireObjectRight.GetComponent<ParticleGenerator> ().Generate ();
 			break;
 		case KinectGestures.Gestures.RaiseLeftHand:
+			effectMan.bachiL = true;
 			//this.fireObjectLeft.GetComponent<ParticleGenerator> ().Generate ();
 			break;
 		case KinectGestures.Gestures.RaiseRightHand:
+			effectMan.bachiR = true;
 			//this.fireObjectRight.GetComponent<ParticleGenerator> ().Generate ();
 			break;
 		}
+		Invoke ("StopFire", TTLFire);
+	}
+
+	private void StopFire(){
+		effectMan.bachiL = false;
+		effectMan.bachiR = false;
 	}
 
 	private void GenerateWater(KinectGestures.Gestures gesture){
 		if (gesture == KinectGestures.Gestures.SwipeLeft &&
 		   gesture == KinectGestures.Gestures.SwipeRight) {
+			effectMan.wavL = true;
+			effectMan.wavR = true;
+			return;
 			//this.waterObjectLeft.GetComponent<ParticleGenerator> ().Generate ();
 			//this.waterObjectRight.GetComponent<ParticleGenerator> ().Generate ();
 		}
 		switch (gesture) {
 		case KinectGestures.Gestures.SwipeLeft:
+			effectMan.wavL = true;
 			//this.waterObjectLeft.GetComponent<ParticleGenerator> ().Generate ();
 			break;
 		case KinectGestures.Gestures.SwipeRight:
+			effectMan.wavR = true;
 			//this.waterObjectRight.GetComponent<ParticleGenerator> ().Generate ();
 			break;
 		}
 	}
 
+	private void StopWater(){
+		effectMan.wavL = false;
+		effectMan.wavR = false;
+	}
+
 	private void GenerateFootParticle(){
-		//this.footParticleLeft.GetComponent<ParticleGenerator> ().Generate ();
-		//this.footParticleRight.GetComponent<ParticleGenerator> ().Generate ();
+		this.footParticle.GetComponent<ParticleGenerator> ().Generate ();
 	}
 
 	private void StopFootParticle(){
-		//this.footParticleLeft.GetComponent<ParticleGenerator> ().Stop ();
-		//this.footParticleRight.GetComponent<ParticleGenerator> ().Stop ();
+		this.footParticle.GetComponent<ParticleGenerator> ().Stop ();
 	}
 
 	private void GenerateBeam(){
+		effectMan.beamsL = true;
+		effectMan.beamsR = true;
+		Invoke ("StopBeam", TTLBeam);
 		//this.beamObjectLeft.GetComponent<ParticleGenerator> ().Generate ();
 		//this.beamObjectRight.GetComponent<ParticleGenerator> ().Generate ();
 	}
 
-	private void GeneratePlanet(KinectWrapper.NuiSkeletonPositionIndex joint){
-		switch(joint){
+	private void StopBeam(){
+		effectMan.beamsL = false;
+		effectMan.beamsR = false;
+	}
+
+	private void GeneratePlanet(){
+		effectMan.planetKun = true;
+		Invoke ("StopPlanet", TTLPlanet);
+		/*switch(joint){
 		case KinectWrapper.NuiSkeletonPositionIndex.HandRight:
-//			this.planetObjectRight.GetComponent<PlanetBehaviour> ().Play ();
+			this.planetObjectRight.GetComponent<PlanetBehaviour> ().Play ();
 			break;
 		case KinectWrapper.NuiSkeletonPositionIndex.HandLeft:
-			//this.planetObjectLeft.GetComponent<PlanetBehaviour> ().Play ();
+			this.planetObjectLeft.GetComponent<PlanetBehaviour> ().Play ();
 			break;
-		}
+		}*/
+	}
+
+	private void StopPlanet(){
+		effectMan.planetKun = false;
 	}
 	
 }
