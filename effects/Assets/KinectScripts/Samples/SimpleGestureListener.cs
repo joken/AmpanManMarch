@@ -156,15 +156,17 @@ public class SimpleGestureListener : MonoBehaviour, KinectGestures.GestureListen
 
 	private void GenerateFire(KinectGestures.Gestures gesture){
 		switch (gesture) {
-		case KinectGestures.Gestures.Psi:
+		//case KinectGestures.Gestures.Psi:
 			//this.fireObjectLeft.GetComponent<ParticleGenerator> ().Generate ();
 			//this.fireObjectRight.GetComponent<ParticleGenerator> ().Generate ();
-			break;
+		//	break;
 		case KinectGestures.Gestures.RaiseLeftHand:
+			//effectMan.bachiL = true;
 			//this.fireObjectLeft.GetComponent<ParticleGenerator> ().Generate ();
 			break;
 		case KinectGestures.Gestures.RaiseRightHand:
-			//this.fireObjectRight.GetComponent<ParticleGenerator> ().Generate ();
+			//effectMan.bachiR = true;
+			//this.fireObjec tRight.GetComponent<ParticleGenerator> ().Generate ();
 			break;
 		}
 	}
@@ -177,9 +179,11 @@ public class SimpleGestureListener : MonoBehaviour, KinectGestures.GestureListen
 		}
 		switch (gesture) {
 		case KinectGestures.Gestures.SwipeLeft:
+			//effectMan.wavL = true;
 			//this.waterObjectLeft.GetComponent<ParticleGenerator> ().Generate ();
 			break;
 		case KinectGestures.Gestures.SwipeRight:
+			//effectMan.wavR = true;
 			//this.waterObjectRight.GetComponent<ParticleGenerator> ().Generate ();
 			break;
 		}
@@ -196,6 +200,7 @@ public class SimpleGestureListener : MonoBehaviour, KinectGestures.GestureListen
 	}
 
 	private void GenerateBeam(){
+		
 		//this.beamObjectLeft.GetComponent<ParticleGenerator> ().Generate ();
 		//this.beamObjectRight.GetComponent<ParticleGenerator> ().Generate ();
 	}
@@ -203,9 +208,11 @@ public class SimpleGestureListener : MonoBehaviour, KinectGestures.GestureListen
 	private void GeneratePlanet(KinectWrapper.NuiSkeletonPositionIndex joint){
 		switch(joint){
 		case KinectWrapper.NuiSkeletonPositionIndex.HandRight:
+			effectMan.planet = true;
 //			this.planetObjectRight.GetComponent<PlanetBehaviour> ().Play ();
 			break;
 		case KinectWrapper.NuiSkeletonPositionIndex.HandLeft:
+			effectMan.planet = true;
 			//this.planetObjectLeft.GetComponent<PlanetBehaviour> ().Play ();
 			break;
 		}

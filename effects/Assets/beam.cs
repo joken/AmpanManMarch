@@ -20,8 +20,8 @@ public class beam : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//終わったらさしかえて
-		//if (effectMan.beamsR) {
-		if(true){
+		if (effectMan.beamsR) {
+		//if(true){
 			Debug.Log ("test");
 			if (!effectMan.col) {
 					player (beams1);
@@ -29,7 +29,7 @@ public class beam : MonoBehaviour {
 					hand1.transform.LookAt (hand1.transform.position - (elbow1.transform.position - hand1.transform.position));
 					hand2.transform.LookAt (hand2.transform.position - (elbow2.transform.position - hand2.transform.position));
 				} else {
-					stopper (beams2);
+					stopper (beams1);
 					player (beamb);
 					hand1.transform.LookAt (hand1.transform.position - (heart.transform.position - hand1.transform.position));
 				}
@@ -44,11 +44,11 @@ public class beam : MonoBehaviour {
 			}
 		}
 		//終わったら外して
-		/*if (!effectMan.beamsL&&!effectMan.beamsR) {
+		if (!effectMan.beamsL&&!effectMan.beamsR) {
 			stopper (beams1);
 			stopper (beams2);
 			stopper (beamb);
-		}*/
+		}
 
 
 	}
