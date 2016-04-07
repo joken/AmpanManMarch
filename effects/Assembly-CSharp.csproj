@@ -38,20 +38,45 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>D:/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+      <HintPath>C:/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>D:/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+      <HintPath>C:/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\KinectScripts\AvatarController.cs" />
+     <Compile Include="Assets\KinectScripts\AvatarControllerClassic.cs" />
+     <Compile Include="Assets\KinectScripts\Cubeman\CubemanController.cs" />
+     <Compile Include="Assets\KinectScripts\Filters\BoneOrientationsConstraint.cs" />
+     <Compile Include="Assets\KinectScripts\Filters\BoneOrientationsFilter.cs" />
+     <Compile Include="Assets\KinectScripts\Filters\ClippedLegsFilter.cs" />
+     <Compile Include="Assets\KinectScripts\Filters\JointPositionsFilter.cs" />
+     <Compile Include="Assets\KinectScripts\Filters\KinectHelper.cs" />
+     <Compile Include="Assets\KinectScripts\Filters\SelfIntersectionConstraint.cs" />
+     <Compile Include="Assets\KinectScripts\Filters\TimedLerp.cs" />
+     <Compile Include="Assets\KinectScripts\Filters\TrackingStateFilter.cs" />
+     <Compile Include="Assets\KinectScripts\KinectGestures.cs" />
+     <Compile Include="Assets\KinectScripts\KinectManager.cs" />
+     <Compile Include="Assets\KinectScripts\KinectWrapper.cs" />
+     <Compile Include="Assets\KinectScripts\Samples\FollowUserRotation.cs" />
+     <Compile Include="Assets\KinectScripts\Samples\GetJointPositionDemo.cs" />
+     <Compile Include="Assets\KinectScripts\Samples\LoadMainLevel.cs" />
+     <Compile Include="Assets\KinectScripts\Samples\MouseControl.cs" />
+     <Compile Include="Assets\KinectScripts\Samples\SetSceneAvatars.cs" />
+     <Compile Include="Assets\KinectScripts\Samples\SimpleGestureListener.cs" />
+     <Compile Include="Assets\OverlayDemo\Scripts\GestureDebug.cs" />
+     <Compile Include="Assets\OverlayDemo\Scripts\KinectOverlayer.cs" />
+     <Compile Include="Assets\OverlayDemo\Scripts\ParticleGenerator.cs" />
+     <Compile Include="Assets\OverlayDemo\Scripts\PlanetBehaviour.cs" />
+     <Compile Include="Assets\OverlayDemo\Scripts\PositionTextRenderer.cs" />
+     <Compile Include="Assets\OverlayDemo\Scripts\SkeltonPosIndexName.cs" />
      <Compile Include="Assets\SimpleParticlePack\Scripts\ParticleTester.cs" />
      <Compile Include="Assets\beam.cs" />
      <Compile Include="Assets\byfoot.cs" />
      <Compile Include="Assets\create.cs" />
      <Compile Include="Assets\effectMan.cs" />
      <Compile Include="Assets\fire.cs" />
-     <Compile Include="Assets\goal.cs" />
      <Compile Include="Assets\planetMan.cs" />
      <Compile Include="Assets\rotate.cs" />
      <Compile Include="Assets\testEffect\Beam.cs" />
@@ -66,10 +91,10 @@
      <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\WaterInclude.cginc" />
      <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Advanced.shader" />
  <Reference Include="UnityEngine.UI">
- <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>C:/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

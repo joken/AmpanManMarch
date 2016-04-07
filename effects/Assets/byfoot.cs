@@ -16,8 +16,8 @@ public class byfoot : MonoBehaviour {
 	void Update () {
 		un.startColor = unC;
 		unC.a = 1;
-		unC.r = 1-foot1.transform.position.y * 0.1f;
-		unC.g = 1-foot2.transform.position.y * 0.1f;
+		unC.r = 1-(11+foot1.transform.position.y) * 0.1f;
+		unC.g = 1-(11+foot2.transform.position.y) * 0.1f;
 		dis = foot1.transform.position - foot2.transform.position;
 		unC.b = (Mathf.Sqrt (dis.x * dis.x + dis.z * dis.z) - 2) * 0.1f > 0 ? 1-(Mathf.Sqrt (dis.x * dis.x + dis.z * dis.z) - 6) * 0.1f:1 ;
 	}
