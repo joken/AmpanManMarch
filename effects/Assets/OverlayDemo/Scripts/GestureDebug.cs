@@ -18,6 +18,6 @@ public class GestureDebug : MonoBehaviour {
 	void Update () {
 		distance = RightHand.GetComponent<Transform> ().position - Kata.GetComponent<Transform> ().position;
 		distanceViewport = mycamera.WorldToViewportPoint (distance);
-		Debug.Log ("Distance : " + distanceViewport.ToString());
+		//Debug.Log ("Distance : " + distanceViewport.ToString());
 	}
 }

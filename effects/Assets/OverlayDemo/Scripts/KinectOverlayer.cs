@@ -51,7 +51,7 @@ public class KinectOverlayer : MonoBehaviour
 				foreach(GameObject joint in this.OverlayObjects) {
 					KinectWrapper.NuiSkeletonPositionIndex skelton = joint.GetComponent<SkeltonPosIndexName>().getSkelton();
 					int iJointIndex = this.TrackedJoints.IndexOf(skelton);
-					Debug.Log ("Pos : "+iJointIndex);
+//					Debug.Log ("Pos : "+iJointIndex);
 
 					if (manager.IsJointTracked (userId, iJointIndex)) {
 						Vector3 posJoint = manager.GetRawSkeletonJointPos (userId, (int)skelton);
