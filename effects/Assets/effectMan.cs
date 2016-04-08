@@ -15,6 +15,8 @@ public class effectMan : MonoBehaviour {
 
 	public static bool planetKun;
 
+	public static bool isSoundEnable;
+
 	public Vector3 dis;
 	public static bool col;
 
@@ -29,6 +31,10 @@ public class effectMan : MonoBehaviour {
 	void Update () {
 		if(Input.GetKeyUp(KeyCode.F4)){
 			isDebugEnable = !isDebugEnable;
+		}
+
+		if (Input.GetKeyUp (KeyCode.F5)) {
+			isSoundEnable = !isSoundEnable;
 		}
 
 		if (isDebugEnable) {

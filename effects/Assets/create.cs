@@ -8,11 +8,10 @@ public class create : MonoBehaviour {
 
 	public Vector3 m_pos;
 
-//	private List<List<GameObject>> planets;
+	public SoundPlayer sound;
 
 	// Use this for initialization
 	void Start () {
-//		planets = new List<List<GameObject>> ();
 	}
 	
 	// Update is called once per frame
@@ -29,6 +28,7 @@ public class create : MonoBehaviour {
 				p.transform.parent = gameObject.transform;
 				m_pos = transform.position;
 			}
+			sound.PlaySound ();
 			Debug.Log ("planets : " + gameObject.transform.childCount);
 		} else {
 			if (gameObject.transform.childCount != 0) {

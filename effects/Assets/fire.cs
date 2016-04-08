@@ -6,9 +6,12 @@ public class fire : MonoBehaviour {
 	public ParticleSystem bachi2;
 	public ParticleSystem fi;
 	public bool player;
+
+	public SoundPlayer soundLeft;
+	public SoundPlayer soundRight;
+
 	// Use this for initialization
 	void Start () {
-	
 	}
 	
 	// Update is called once per frame
@@ -26,13 +29,15 @@ public class fire : MonoBehaviour {
 					fi.Play ();
 					player = false;
 				}
-			
 			}
+			soundRight.PlaySound ();
 		}
 		if (effectMan.bachiL) {
 			if (!effectMan.col) {
 				//bachi1.transform.position = new Vector3 (Random.Range (-2.0f, 2.0f), Random.Range (-2.0f, 2.0f), Random.Range (-2.0f, 2.0f));
-				bachi2.Play ();}
+				bachi2.Play ();
+			}
+			soundLeft.PlaySound ();
 		}
 			if(!effectMan.bachiL &&!effectMan.bachiR){
 			fi.Stop ();
@@ -40,4 +45,5 @@ public class fire : MonoBehaviour {
 				player = true;}
 		
 	}
+
 }

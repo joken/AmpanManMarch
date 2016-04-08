@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class wave : MonoBehaviour {
-	public float posy=0;
+	public float posy;
 	public bool cltR = true;
 	public bool cltL = true;
 
@@ -12,6 +12,7 @@ public class wave : MonoBehaviour {
 	public GameObject Cam;
 	public GameObject handR;
 	public GameObject handL;
+	public GameObject Foot;
 	public GameObject wat;
 	public GameObject wav;
 	public Object cwatR;
@@ -21,18 +22,21 @@ public class wave : MonoBehaviour {
 	public Object Steam;
 	public Object[] Steams = new Object[5];
 
+	public SoundPlayer soundLeft;
+	public SoundPlayer soundRight;
+
 	// Use this for initialization
 	void Start () {
-	
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		posy = Foot.transform.position.y;
 		if (effectMan.wavR) {
 			if (cltR) {
 				cltR = false;
 				cwatR = Instantiate (wat, handR.transform.position, Quaternion.identity);
-
+				soundRight.PlaySound ();
 			} else {
 				timer += Time.deltaTime;
 				if (timer > 2 && clv ) {
@@ -53,7 +57,7 @@ public class wave : MonoBehaviour {
 			if (cltL) {
 				cltL = false;
 				cwatL = Instantiate (wat, handL.transform.position, Quaternion.identity);
-
+				soundLeft.PlaySound ();
 			} else {
 				timer += Time.deltaTime;
 				if (timer > 2 && clv) {

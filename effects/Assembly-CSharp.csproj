@@ -72,6 +72,7 @@
      <Compile Include="Assets\OverlayDemo\Scripts\PositionTextRenderer.cs" />
      <Compile Include="Assets\OverlayDemo\Scripts\SkeltonPosIndexName.cs" />
      <Compile Include="Assets\SimpleParticlePack\Scripts\ParticleTester.cs" />
+     <Compile Include="Assets\SoundPlayer.cs" />
      <Compile Include="Assets\beam.cs" />
      <Compile Include="Assets\byfoot.cs" />
      <Compile Include="Assets\create.cs" />

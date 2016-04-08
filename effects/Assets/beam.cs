@@ -11,6 +11,8 @@ public class beam : MonoBehaviour {
 	public GameObject elbow2;
 	public GameObject heart;
 
+	public SoundPlayer soundLeft;
+	public SoundPlayer soundRight;
 
 	// Use this for initialization
 	void Start () {
@@ -32,6 +34,7 @@ public class beam : MonoBehaviour {
 					player (beamb);
 					hand1.transform.LookAt (hand1.transform.position - (heart.transform.position - hand1.transform.position));
 				}
+			soundRight.PlaySound ();
 			}
 		if (effectMan.beamsL) {
 			if (!effectMan.col) {
@@ -41,6 +44,7 @@ public class beam : MonoBehaviour {
 			} else {
 				stopper (beams2);
 			}
+			soundLeft.PlaySound ();
 		}
 		//終わったら外して - > はずした
 		if (!effectMan.beamsL&&!effectMan.beamsR) {
