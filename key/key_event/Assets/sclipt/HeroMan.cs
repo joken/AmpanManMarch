@@ -40,22 +40,22 @@ public class HeroMan : MonoBehaviour {
 		}*/
 
 
-		if (Input.GetKey(KeyCode.UpArrow)) {
-			this.GetComponent<Rigidbody>().AddForce(
-				dir,ForceMode.VelocityChange);
-		} if (Input.GetKey(KeyCode.RightArrow)) {
-			ang += 0.05f;
-			dir.x = Mathf.Sin (ang);
-			dir.z = Mathf.Cos (ang);
+		CamMan();
+		if (Input.GetKey (KeyCode.UpArrow)) {
+			this.GetComponent<Rigidbody> ().AddForce (
+				camera.transform.forward, ForceMode.VelocityChange);
 		}
-			 if (Input.GetKey(KeyCode.LeftArrow)) {
-			ang -= 0.05f;
-			dir.x = Mathf.Sin (ang);
-			dir.z = Mathf.Cos (ang);
-		}
+//		 if (Input.GetKey (KeyCode.RightArrow)) {
+//			dir.x = Mathf.Sin (ang);
+//			dir.z = Mathf.Cos (ang);
+//		}
+//		if (Input.GetKey (KeyCode.LeftArrow)) {
+//			dir.x = Mathf.Sin (ang);
+//			dir.z = Mathf.Cos (ang);
+//		}
 		 if (Input.GetKey(KeyCode.DownArrow)) {
 			this.GetComponent<Rigidbody>().AddForce(
-				-dir,ForceMode.VelocityChange);
+				-camera.transform.forward,ForceMode.VelocityChange);
 		}
 		//camera.transform.position = gameObject.transform.position-(pos - gameObject.transform.position) * 1000.0f;
 		//camera.transform.LookAt (gameObject.transform.position);
@@ -67,13 +67,13 @@ public class HeroMan : MonoBehaviour {
 
 		//transform.rotation = Quaternion.Euler (0, Mathf.Acos(dir.z/Mathf.Sqrt(dir.x*dir.x+dir.z*dir.z))*180/Mathf.PI, 0);
 		//transform.rotation = Quaternion.Euler (0, Mathf.Acos(posMan.z/Mathf.Sqrt(posMan.x*posMan.x+posMan.z*posMan.z))*180/Mathf.PI, 0);
-		CamMan();
 		//gameObject.transform.position = pos;
 
 
 	}
 	public void CamMan(){
 		camMan.transform.position = gameObject.transform.position;
-		camMan.transform.LookAt (gameObject.transform.position+dir);
+		camMan.transform.Rotate (0,(Mathf.Atan (Input.GetAxis ("Horizontal")) * speedMan),0);
+		camMan.transform.LookAt (gameObject.transform.position/*+dir*/);
 	}
 }
