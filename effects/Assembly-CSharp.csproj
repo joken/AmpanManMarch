@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\EffectScripts\BallMeshRenderer.cs" />
+     <Compile Include="Assets\EffectScripts\HandCollider.cs" />
      <Compile Include="Assets\EffectScripts\ParticleGenerator.cs" />
      <Compile Include="Assets\EffectScripts\PlanetBehaviour.cs" />
      <Compile Include="Assets\EffectScripts\SkeltonPosIndexName.cs" />
