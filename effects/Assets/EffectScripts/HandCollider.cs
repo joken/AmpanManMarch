@@ -14,7 +14,6 @@ public class HandCollider : MonoBehaviour {
 	}
 
 	void OnTriggerStay(Collider target){
-		Debug.Log ("collision");
 		if (target.gameObject.tag == "Hand") {
 			effectMan.col = true;
 		}

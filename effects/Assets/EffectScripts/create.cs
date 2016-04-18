@@ -29,7 +29,7 @@ public class create : MonoBehaviour {
 				m_pos = transform.position;
 			}
 			sound.PlaySound ();
-			Debug.Log ("planets : " + gameObject.transform.childCount);
+//			Debug.Log ("planets : " + gameObject.transform.childCount);
 		} else {
 			if (gameObject.transform.childCount != 0) {
 				foreach(Transform child in gameObject.transform){
